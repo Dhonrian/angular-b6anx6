@@ -1,35 +1,24 @@
-<h1 class="header">Login with Firebase or Social Providers</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <form [formGroup]="loginForm">
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" formControlName="email" class="form-control">
+<div class="container p-5 " id="bloco">
+        <div class="b-login-1">
+            <h3>Sign in</h3>
+            <p>Entre para gerenciar seus formulários</p>
         </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" formControlName="password">
-          <label class="error">{{errorMessage}}</label>
-        </div>
-        <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-default">Login</button>
-      </form>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <button type="button" class="btn btn-primary btn-block" (click)="tryFacebookLogin()">Login with Facebook</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Login with Google</button>
-    </div>
-  </div>
+        <form [formGroup]="loginForm">
+            <input type="email" placeholder="E-mail" formControlName="email">
+            <input type="password" placeholder="******" formControlName="password">
+            <div class="row mt-2">
+                <p class="link col-12 col-md-8"><a href="/register">Create an account</a></p>
+                <input type="submit" value="Login" class="col-12 col-md-4" (click)="tryLogin(loginForm.value)">
+            </div>
+        </form>
+        <label class="error">{{errorMessage}}</label>
 
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <p>No account yet? <a href="/register">Create an account</a></p>
-    </div>
-  </div>
+        <div class="row justify-content-center my-4">
+            <div id="btn-face" class="btn-ball mx-4" (click)="tryFacebookLogin()">
+                <i class="fab fa-facebook-f"></i>
+            </div>
+            <div id="btn-google" class="btn-ball mx-4" (click)="tryGoogleLogin()">
+                <i class="fab fa-google"></i>
+            </div>
+        </div>
 </div>
