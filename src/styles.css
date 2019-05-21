@@ -125,7 +125,15 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 
+a.back {
+    color: #111;
+    position: absolute;
+}
 
+a.back:hover {
+    color: #28a745;
+    cursor: pointer;
+}
 
 /* HEADER */
 
