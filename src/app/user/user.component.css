@@ -1,0 +1,47 @@
+
+/*  */
+
+.btn-add {
+    background-color: #28a745;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+    cursor:pointer;
+}
+
+.p-add {
+    font-weight: bold;
+}
+
+
+.box-add::after {
+    content: '';
+    display: block;
+    width: 100%;
+    border-bottom: solid #bbb 1px;
+    margin-top: 40px;
+}
+
+
+.mini-box-form {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+    height: 300px;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.mini-box-form:hover {
+    transform: scale(1.005);
+    transition: .5s;
+    opacity: 1;
+}
+
+li {
+    display: inline-block;
+}
+
