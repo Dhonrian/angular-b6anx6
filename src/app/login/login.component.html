@@ -1,24 +1,24 @@
-<div class="container p-5 " id="bloco">
-        <div class="b-login-1">
-            <h3>Sign in</h3>
-            <p>Entre para gerenciar seus formulários</p>
-        </div>
-        <form [formGroup]="loginForm">
-            <input type="email" placeholder="E-mail" formControlName="email">
-            <input type="password" placeholder="******" formControlName="password">
-            <div class="row mt-2">
-                <p class="link col-12 col-md-8"><a href="/register">Create an account</a></p>
-                <input type="submit" value="Login" class="col-12 col-md-4" (click)="tryLogin(loginForm.value)">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="container p-5 text-color-muted" id="bloco">
+            <div class="b-login-1">
+                <h3>Sign in</h3>
+                <p>Entre para gerenciar seus formulários</p>
             </div>
-        </form>
-        <label class="error">{{errorMessage}}</label>
+            <form [formGroup]="loginForm">
+                <input type="email" placeholder="E-mail" formControlName="email" class="my-2">
+                <input type="password" placeholder="******" formControlName="password" class="my-2">
+                <input type="submit" value="Login" class="col-12 my-4" (click)="tryLogin(loginForm.value)">
+                <p><a href="/register">Criar uma conta...</a></p>
+            </form>
+            <label class="error">{{errorMessage}}</label>
 
-        <div class="row justify-content-center my-4">
-            <div id="btn-face" class="btn-ball mx-4" (click)="tryFacebookLogin()">
-                <i class="fab fa-facebook-f"></i>
-            </div>
-            <div id="btn-google" class="btn-ball mx-4" (click)="tryGoogleLogin()">
-                <i class="fab fa-google"></i>
+            <div class="row justify-content-center my-2">
+                <div id="btn-face" class="btn-ball mx-4" (click)="tryFacebookLogin()">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div id="btn-google" class="btn-ball mx-4" (click)="tryGoogleLogin()">
+                    <i class="fab fa-google"></i>
+                </div>
             </div>
         </div>
-</div>
+    </div>
