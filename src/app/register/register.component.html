@@ -5,7 +5,6 @@
                 <p>Cadastre uma Conta para gerenciar seus formulários</p>
             </div>
             <form [formGroup]="registerForm">
-                <fieldset>
                 <input type="email" placeholder="Cadastre seu email" class="my-2" formControlName="email">
                 <input type="password" placeholder="Cadastre uma senha" class="my-2" formControlName="password">
                 <label class="error">{{errorMessage}}</label>
