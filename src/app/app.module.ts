@@ -16,13 +16,16 @@ import { UserService } from './core/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { SurveyComponent } from './survey/survey.component';
+import { SurveyServicoService } from './survey/survey-servico.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
-    RegisterComponent
+    RegisterComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { AppComponent } from './app.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, SurveyServicoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
