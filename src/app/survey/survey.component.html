@@ -1,17 +1,13 @@
 <header class="header p-3">
         <div class="row justify-content-between align-items-center head-box px-4">
-            <h1 class="col-6 col-md-4">Cadastrar Formulário</h1>
+            <h1 class="col-6 col-md-4">
+              <a href="/user" class="mx-4 text-white">
+                  <i class="fas fa-arrow-left"></i>
+              </a>
+              Cadastrar Formulário</h1>
             <div class="px-4 col-md-4" id="form-search">
                 <i class="fas fa-search text-white"></i>
                 <input id="search-bar" placeholder="Search" class="mx-4 px-2 py-0">
-            </div>
-            <div class="row align-items-center justify-content-end col-6 col-md-4" id="user-info"
-                *ngIf='user.provider != "password"'>
-                <div>
-                    <div id="name-user">{{user.name}}</div>
-                    <a (click)="logout()" class="logout"> Sair </a>
-                </div>
-                <img class="circle-user mx-3" [src]="user.image" *ngIf="user.image">
             </div>
         </div>
 </header>
