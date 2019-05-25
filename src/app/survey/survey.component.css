@@ -1,0 +1,28 @@
+.inpText {
+    width: 100%;
+    border: none;
+    border-bottom: solid 1px #aaa;
+    font-size: 1.5em;
+    color: #111;
+    padding: 10px;
+}
+
+textarea.inpText {
+    height: 100px;
+}
+
+.inpResp {
+    width: 95%;
+    max-width: 700px;
+
+}
+
+.checkResp {
+    width: 5%;
+    
+}
+
+input[type="checkbox"] {
+    height: 30px;
+}
+
