@@ -14,8 +14,18 @@
 
    <div class="container box p-5">
         <div class="my-4">
-            <h5>Título Formulário</h5>
-            <p><input type="text" placeholder="Digite o Título do Formulário" class="inpText"></p>
+            <h5>Título Questionario</h5>
+            <p><input [(ngModel)]="titulo" type="text" placeholder="Digite o Título do Questionário" class="inpText"></p>
+        </div>
+
+        <div class="my-4">
+            <h5>Data inicio</h5>
+            <p><input [(ngModel)]="inicio" placeholder="dd/mm/aaaa" class="inpText"></p>
+        </div>
+
+        <div class="my-4">
+            <h5>Data Fim</h5>
+            <p><input [(ngModel)]="fim" placeholder="dd/mm/aaaa" class="inpText"></p>
         </div>
 
         <div class="my-4">
@@ -31,6 +41,7 @@
             <p class="my-4 py-4"><input type="checkbox" class="checkResp"><input type="text" class="inpText inpResp" placeholder="Resposta 04"></p>
         </div>
         <div>
-            <input type="submit" value="Cadastrar Pergunta">
+            <button>Salvar Questionário
+            </button>
         </div>
     </div> 

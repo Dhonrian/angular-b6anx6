@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ambiente } from '../ambiente';
- import * as firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 import { User } from '../data/user';
 import { AuthService } from '../core/auth.service';
 import { Router, Params } from '@angular/router';
-import { SurveyServicoService } from '../survey/survey-servico.service';
+import { SurveyServicoService } from '../data/survey-servico.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -36,13 +36,23 @@ export class LoginComponent {
   tryFacebookLogin() {
     this.authService.doFacebookLogin()
       .then(res => {
-      this.router.navigate(['/user']);
+        let idusuario = firebase.auth().currentUser.uid;
+        console.log(idusuario);
+        let usuario: User = new User();
+        usuario.usuario = idusuario;
+        this.servico.insertUsuario(usuario);
+        this.router.navigate(['/user']);
       })
   }
 
   tryGoogleLogin() {
     this.authService.doGoogleLogin()
       .then(res => {
+        let idusuario = firebase.auth().currentUser.uid;
+        console.log(idusuario);
+        let usuario: User = new User();
+        usuario.usuario = idusuario;
+        this.servico.insertUsuario(usuario);
         this.router.navigate(['/user']);
       })
   }
@@ -50,6 +60,11 @@ export class LoginComponent {
   tryLogin(value) {
     this.authService.doLogin(value)
       .then(res => {
+        let idusuario = firebase.auth().currentUser.uid;
+        console.log(idusuario);
+        let usuario: User = new User();
+        usuario.usuario = idusuario;
+        this.servico.insertUsuario(usuario);
         this.router.navigate(['/user']);
       }, err => {
         console.log(err);

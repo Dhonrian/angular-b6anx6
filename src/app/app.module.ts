@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AngularFireModule } from '@angular/fire';
@@ -18,7 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SurveyComponent } from './survey/survey.component';
-import { SurveyServicoService } from './survey/survey-servico.service';
+import { SurveyServicoService } from './data/survey-servico.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SurveyServicoService } from './survey/survey-servico.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(ambiente.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features

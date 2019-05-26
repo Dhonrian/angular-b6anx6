@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
  import * as firebase from 'firebase/app';
  import { ambiente } from '../ambiente';
-
 import { UserService } from '../core/user.service';
 import { AuthService } from '../core/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { User } from '../data/user';
-import { SurveyServicoService } from '../survey/survey-servico.service';
+import { SurveyServicoService } from '../data/survey-servico.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
 
@@ -33,11 +32,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let idusuario = firebase.auth().currentUser.uid;
-    console.log(idusuario);
-    let usuario: User = new User();
-    usuario.usuario = idusuario;
-    this.servico.insertUsuario(usuario);
+
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
