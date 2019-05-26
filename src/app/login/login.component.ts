@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { ambiente } from '../ambiente';
+ import * as firebase from 'firebase/app';
+import { User } from '../data/user';
 import { AuthService } from '../core/auth.service';
 import { Router, Params } from '@angular/router';
+import { SurveyServicoService } from '../survey/survey-servico.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +20,8 @@ export class LoginComponent {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private servico: SurveyServicoService
   ) {
     this.createForm();
   }
@@ -31,7 +36,7 @@ export class LoginComponent {
   tryFacebookLogin() {
     this.authService.doFacebookLogin()
       .then(res => {
-        this.router.navigate(['/user']);
+      this.router.navigate(['/user']);
       })
   }
 

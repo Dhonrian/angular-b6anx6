@@ -5,6 +5,7 @@ import { rootRouterConfig } from './app.routes';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ambiente } from './ambiente';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
@@ -33,7 +34,8 @@ import { SurveyServicoService } from './survey/survey-servico.service';
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(ambiente.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireDatabaseModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, SurveyServicoService],
   bootstrap: [AppComponent]

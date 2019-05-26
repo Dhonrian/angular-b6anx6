@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+ import * as firebase from 'firebase/app';
+ import { ambiente } from '../ambiente';
+
 import { UserService } from '../core/user.service';
 import { AuthService } from '../core/auth.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +16,7 @@ import { FirebaseUserModel } from '../core/user.model';
   templateUrl: 'user.component.html',
   styleUrls: ['user.component.css']
 })
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit {
 
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
@@ -21,14 +24,20 @@ export class UserComponent implements OnInit{
   constructor(
     public userService: UserService,
     public authService: AuthService,
+    private servico: SurveyServicoService,
     private route: ActivatedRoute,
-    private location : Location,
+    private location: Location,
     private fb: FormBuilder
   ) {
 
   }
 
   ngOnInit(): void {
+    let idusuario = firebase.auth().currentUser.uid;
+    console.log(idusuario);
+    let usuario: User = new User();
+    usuario.usuario = idusuario;
+    this.servico.insertUsuario(usuario);
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
@@ -40,23 +49,23 @@ export class UserComponent implements OnInit{
 
   createForm(name) {
     this.profileForm = this.fb.group({
-      name: [name, Validators.required ]
+      name: [name, Validators.required]
     });
   }
 
-  save(value){
+  save(value) {
     this.userService.updateCurrentUser(value)
-    .then(res => {
-      console.log(res);
-    }, err => console.log(err))
+      .then(res => {
+        console.log(res);
+      }, err => console.log(err))
   }
 
-  logout(){
+  logout() {
     this.authService.doLogout()
-    .then((res) => {
-      this.location.back();
-    }, (error) => {
-      console.log("Logout error", error);
-    });
+      .then((res) => {
+        this.location.back();
+      }, (error) => {
+        console.log("Logout error", error);
+      });
   }
 }
