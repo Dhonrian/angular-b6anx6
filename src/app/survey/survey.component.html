@@ -1,8 +1,8 @@
 <header class="header p-3">
-        <div class="row justify-content-between align-items-center head-box px-4">
-            <h1 class="col-6 col-md-4">
-              <a href="/user" class="mx-4 text-white">
-                  <i class="fas fa-arrow-left"></i>
+	<div class="row justify-content-between align-items-center head-box px-4">
+		<h1 class="col-6 col-md-4">
+			<a href="/user" class="mx-4 text-white">
+				<i class="fas fa-arrow-left"></i>
               </a>
               Cadastrar Formulário</h1>
             <div class="px-4 col-md-4" id="form-search">
@@ -29,19 +29,22 @@
         </div>
 
         <div class="my-4">
+            <h5>Grupo</h5>
+            <p><textarea name="" id="" class="inpText" [(ngModel)]="grupo" placeholder="Digite o Grupo..."></textarea></p>
+        </div>
+
+        <div class="my-4">
             <h5>Pergunta</h5>
             <p><textarea name="" id="" class="inpText" placeholder="Digite a Questão..."></textarea></p>
         </div>
 
         <div>
-            <h5>Repostas</h5>
-            <p class="my-4 py-4"><input type="checkbox" class="checkResp"><input type="text" class="inpText inpResp" placeholder="Resposta 01"></p>
-            <p class="my-4 py-4"><input type="checkbox" class="checkResp"><input type="text" class="inpText inpResp" placeholder="Resposta 02"></p>
-            <p class="my-4 py-4"><input type="checkbox" class="checkResp"><input type="text" class="inpText inpResp" placeholder="Resposta 03"></p>
-            <p class="my-4 py-4"><input type="checkbox" class="checkResp"><input type="text" class="inpText inpResp" placeholder="Resposta 04"></p>
+            <h5>Reposta</h5>
+            <p class="my-4 py-4"><input type="text" class="inpText inpResp" [(ngModel)]="resposta"></p>
+  
         </div>
         <div>
-            <button>Salvar Questionário
+            <button (click)="salvarQuestionario()">Salvar Questionário
             </button>
         </div>
-    </div> 
+    </div>

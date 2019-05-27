@@ -2,8 +2,8 @@ import { Group } from './group';
 
 export class Survey {
   titulo: string;
-  inicio: Date;
-  fim: Date;
+  inicio: firebase.firestore.Timestamp;
+  fim: firebase.firestore.Timestamp;
   grupos: Group[];
 
 }

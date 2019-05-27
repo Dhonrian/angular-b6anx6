@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../data/user';
 import { Survey } from '../data/survey';
+import { Group } from '../data/group';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 
@@ -17,8 +18,9 @@ export class SurveyServicoService {
       .catch((error: any) => { console.log(error) });
   }
 
+
   addQuestionario(q: Survey, key: string): void {
-    console.log( q);
+    console.log(q);
     this.bd.list(`prj/usuarios/${key}/questionarios/`).push(q)
       .then((result: any) => {
         console.log(result.key);
@@ -56,6 +58,17 @@ export class SurveyServicoService {
       );
   }
 
+  addGrupo(g: Group, usuariokey:string, questionariokey: string){
+    console.log(g);
+    this.bd.list(`prj/usuarios/${usuariokey}/questionarios/${questionariokey}/grupos`).push(g)
+      .then((result: any) => {
+        console.log(result.key);
+      })
+      .catch((error: any) => {
+        console.error(error);
+      });
+  }
+  
 
   getAllGrupo(usuariokey:string, questionariokey:string) {
     return this.bd.list(`prj/usuarios/${usuariokey}/questionarios/${questionariokey}/grupos`,
