@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../data/user';
 import { Survey } from '../data/survey';
+import { OpenQuestion } from '../data/open-question';
 import { Group } from '../data/group';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
@@ -9,6 +10,8 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class SurveyServicoService {
+
+  private key;
 
   constructor(private bd: AngularFireDatabase) { }
 
@@ -19,16 +22,11 @@ export class SurveyServicoService {
   }
 
 
-  addQuestionario(q: Survey, key: string): void {
+  addQuestionario(q: Survey, key: string){
     console.log(q);
-    this.bd.list(`prj/usuarios/${key}/questionarios/`).push(q)
-      .then((result: any) => {
-        console.log(result.key);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
-  }
+    let a = this.bd.list(`prj/usuarios/${key}/questionarios/`).push(q).key;
+    return a;
+     }
 
   getAllUsuario() {
     return this.bd.list('prj/usuarios',
@@ -59,14 +57,8 @@ export class SurveyServicoService {
   }
 
   addGrupo(g: Group, usuariokey:string, questionariokey: string){
-    console.log(g);
-    this.bd.list(`prj/usuarios/${usuariokey}/questionarios/${questionariokey}/grupos`).push(g)
-      .then((result: any) => {
-        console.log(result.key);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+   let grupokey = this.bd.list(`prj/usuarios/${usuariokey}/questionarios/${questionariokey}/grupos`).push(g).key;
+   return grupokey;
   }
   
 
@@ -85,6 +77,16 @@ export class SurveyServicoService {
   }
 
 
+  addQuestaoAberta(q: OpenQuestion, key: string, questionariokey: string, grupokey: string): void {
+    console.log(q);
+    this.bd.list(`prj/usuarios/${key}/questionarios/${questionariokey}/grupos/${grupokey}/questao-aberta/`).push(q)
+      .then((result: any) => {
+        console.log(result.key);
+      })
+      .catch((error: any) => {
+        console.error(error);
+      });
+  }
 
 
 }

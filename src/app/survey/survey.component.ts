@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Survey } from '../data/survey';
 import { Group } from '../data/group';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { OpenQuestion } from '../data/open-question';
 import { SurveyServicoService } from '../data/survey-servico.service';
 import * as firebase from 'firebase/app';
@@ -23,27 +24,25 @@ export class SurveyComponent implements OnInit {
   private enunciado: string;
   private resposta: string[];
   private inicio: string;
-  private fim: string;
   private grupo: string;
+  private fim: string;
   private usuariokey;
   private lists;
   private user: Observable<firebase.User>;
   private questionarios: Observable<any>;
   private questionariokey;
+  private grupokey;
 
 
   constructor(private servico: SurveyServicoService,
-    public afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) { }
+    public afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute, private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.afAuth.authState.subscribe(user => {
       if (user) this.usuariokey = user.uid;
       this.questionarios = this.servico.getAllQuestionario(this.usuariokey);
     })
-    this.route.params.subscribe(parametros => {
-      this.questionariokey = (parametros['questionariokey'] != undefined ? parametros['questionariokey'] : '');
-      console.log(this.questionariokey);
-    })
+     
   }
 
   toData(data): number {
@@ -61,21 +60,24 @@ export class SurveyComponent implements OnInit {
   salvarQuestionario() {
 
     let group: Group = new Group();
+
     group.titulo = this.grupo;
     group.abertas = [];
     group.fechadas = [];
     this.addQuestion(group);
-    console.log(group)
-
 
     if (this.usuariokey != undefined) {
+      let questao: OpenQuestion = new OpenQuestion();
+      questao.enunciado = this.enunciado;
+      questao.respota = this.resposta;
       let questionario: Survey = new Survey();
       questionario.titulo = this.titulo;
       questionario.inicio = this.toData(this.inicio);
       questionario.fim = this.toData(this.fim);
-      this.servico.addQuestionario(questionario, this.usuariokey);
-
-      this.servico.addGrupo(group, this.usuariokey,this.questionariokey);
+      this.questionariokey = this.servico.addQuestionario(questionario, this.usuariokey);
+      console.log("Questionario key", this.questionariokey);
+      this.grupokey = this.servico.addGrupo(group, this.usuariokey,this.questionariokey);
+     // console.log(questao)
     }
     else {
       alert("Usuário não definido")
