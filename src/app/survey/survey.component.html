@@ -14,23 +14,26 @@
 
    <div class="container box p-5">
         <div class="my-4">
-            <h5>Título Questionario</h5>
-            <p><input [(ngModel)]="titulo" type="text" placeholder="Digite o Título do Questionário" class="inpText"></p>
+                <h5>Título Questionario</h5>
+                <p><input [(ngModel)]="titulo" type="text" placeholder="Digite o Título do Questionário" class="inpTitulo"></p>
         </div>
 
-        <div class="my-4">
-            <h5>Data inicio</h5>
-            <p><input [(ngModel)]="inicio" placeholder="dd/mm/aaaa" class="inpText"></p>
+        <div>
+             <h5>Descrição do formulário</h5>
+             <p><textarea [(ngModel)]="descricao" type="text" placeholder="Descrição do formulário" class="inpText" maxlength="255"></textarea></p>
         </div>
 
-        <div class="my-4">
-            <h5>Data Fim</h5>
-            <p><input [(ngModel)]="fim" placeholder="dd/mm/aaaa" class="inpText"></p>
+  
+        <div>
+            <h5>Inicio</h5> <input type="date" [(ngModel)]="inicio">
         </div>
 
-        <div class="my-4">
-            <h5>Grupo</h5>
-            <p><textarea name="" id="" class="inpText" [(ngModel)]="grupo" placeholder="Digite o Grupo..."></textarea></p>
+        <div>
+            <h5>Fim</h5> <input type="date" [(ngModel)]="fim">
+        </div>
+
+        <div>
+            <h5>Grupo</h5> <input type="text">
         </div>
 
         <div class="my-4">
@@ -40,11 +43,12 @@
 
         <div>
             <h5>Reposta</h5>
-            <p class="my-4 py-4"><input type="text" class="inpText inpResp" [(ngModel)]="resposta"></p>
-  
+            <p><input [(ngModel)]="resposta" type="text" placeholder="Digite a resposta" class="inpText"></p>
         </div>
-        <div>
-            <button (click)="salvarQuestionario()">Salvar Questionário
-            </button>
+        <div (click)="addQuestion()" class="btn-circle" id="btn-pergunta">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div (click)="salvarQuestionario()" class="btn-circle">
+            <i class="fas fa-check"></i>
         </div>
     </div>
