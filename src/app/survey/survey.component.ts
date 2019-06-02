@@ -9,10 +9,6 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
-
-
-
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -21,6 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SurveyComponent implements OnInit {
 
   private titulo: string;
+  private descricao: string;
   private enunciado: string;
   private resposta: string[];
   private inicio: string;
@@ -72,16 +69,17 @@ export class SurveyComponent implements OnInit {
       questao.respota = this.resposta;
       let questionario: Survey = new Survey();
       questionario.titulo = this.titulo;
-      questionario.inicio = this.toData(this.inicio);
-      questionario.fim = this.toData(this.fim);
+      // questionario.inicio = this.toData(this.inicio);
+      // questionario.fim = this.toData(this.fim);
       this.questionariokey = this.servico.addQuestionario(questionario, this.usuariokey);
       console.log("Questionario key", this.questionariokey);
       this.grupokey = this.servico.addGrupo(group, this.usuariokey,this.questionariokey);
      // console.log(questao)
     }
     else {
-      alert("Usuário não definido")
+      alert("Usuário não definido");
     }
+     alert("Formulário Cadastrado");
   }
 
   addQuestion(grupo: Group) {
