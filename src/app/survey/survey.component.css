@@ -1,28 +1,48 @@
+input, textarea {
+  outline: none;
+  border: none;
+  border-bottom: solid 1px #aaa;
+  color: #444;
+  padding: 0;
+}
+
+
+.inpTitulo {
+    width: 100%;
+    font-size: 1.5em;
+    padding: 10px;
+}
+
 .inpText {
     width: 100%;
-    border: none;
-    border-bottom: solid 1px #aaa;
-    font-size: 1.5em;
     color: #111;
     padding: 10px;
 }
 
-textarea.inpText {
-    height: 100px;
+.btn-circle {
+    position: fixed;
+    right: 8%;
+    top: 80%;
+    background-color: #28a745;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+    cursor:pointer;
+    font-size: 1.2em;
+    transition: .5s;
 }
 
-.inpResp {
-    width: 95%;
-    max-width: 700px;
-
+#btn-pergunta {
+  top: 60%;
+  background-color: #fff;
+  color: #28a745;
 }
 
-.checkResp {
-    width: 5%;
-    
+.btn-circle:hover {
+  transform: scale(1.1);
 }
-
-input[type="checkbox"] {
-    height: 30px;
-}
-
