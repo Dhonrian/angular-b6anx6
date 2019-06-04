@@ -18,25 +18,33 @@
                 <p><input [(ngModel)]="titulo" type="text" placeholder="Digite o Título do Questionário" class="inpTitulo"></p>
         </div>
 
-        <div>
+        <div class="my-4">
              <h5>Descrição do formulário</h5>
              <p><textarea [(ngModel)]="descricao" type="text" placeholder="Descrição do formulário" class="inpText" maxlength="255"></textarea></p>
         </div>
 
-  
-        <div>
-            <h5>Inicio</h5> <input type="date" [(ngModel)]="inicio">
+      <div class="row my-4">
+        <div class="col-6">
+            <h5>Inicio</h5> <input type="date" [(ngModel)]="inicio" id="inicio">
         </div>
 
-        <div>
+        <div class="col-6">
             <h5>Fim</h5> <input type="date" [(ngModel)]="fim">
         </div>
-
-        <div>
-            <h5>Grupo</h5> <input type="text">
+      </div>
+        <div class="my-4">
+            <h5>Grupo</h5> <input type="text" [(ngModel)]="grupo">
+            <div (click)="salvarGrupo()" class="btn-add"> Adicionar Grupo </div>
         </div>
 
         <div class="my-4">
+            <h5>Emails</h5> <input type="text"  [(ngModel)]="mail">
+            <div (click)="inserirEmail()" class="btn-add"> Adicionar email </div>
+        </div>
+
+        <div class="my-4">
+            <select>
+            </select> 
             <h5>Pergunta</h5>
             <p><textarea name="" id="" class="inpText" [(ngModel)]="enunciado" placeholder="Digite a Questão..."></textarea></p>
         </div>
@@ -54,3 +62,4 @@
           </div>
         </a>
     </div>
+
