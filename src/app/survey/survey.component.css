@@ -46,3 +46,16 @@ input, textarea {
 .btn-circle:hover {
   transform: scale(1.1);
 }
+
+.btn-add {
+  background-color: #FFF;
+  color: #28a745;
+  float: right;
+  transition: .5s;
+  opacity: .5;
+}
+
+.btn-add:hover {
+  cursor: pointer;
+  opacity: 1;
+}
