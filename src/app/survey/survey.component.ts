@@ -16,6 +16,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SurveyComponent implements OnInit {
 
+  private mail: string;
+  private mails: string[] = [];
   private titulo: string;
   private descricao: string;
   private enunciado: string;
@@ -35,11 +37,15 @@ export class SurveyComponent implements OnInit {
     public afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute, private db: AngularFireDatabase) { }
 
   ngOnInit() {
+    let inicio = document.querySelector("#inicio");
+    let hoje = new Date();
+    console.log(hoje);
+
     this.afAuth.authState.subscribe(user => {
       if (user) this.usuariokey = user.uid;
       this.questionarios = this.servico.getAllQuestionario(this.usuariokey);
     })
-     
+    
   }
 
   toData(data): number {
@@ -57,11 +63,10 @@ export class SurveyComponent implements OnInit {
   salvarQuestionario() {
 
     let group: Group = new Group();
-
     group.titulo = this.grupo;
     group.abertas = [];
     group.fechadas = [];
-    this.addQuestion(group);
+
 
     if (this.usuariokey != undefined) {
       let questao: OpenQuestion = new OpenQuestion();
@@ -69,17 +74,27 @@ export class SurveyComponent implements OnInit {
       questao.respota = this.resposta;
       let questionario: Survey = new Survey();
       questionario.titulo = this.titulo;
-      // questionario.inicio = this.toData(this.inicio);
-      // questionario.fim = this.toData(this.fim);
+      //questionario.inicio = this.toData(this.inicio);
+      //questionario.fim = this.toData(this.fim);
       this.questionariokey = this.servico.addQuestionario(questionario, this.usuariokey);
       console.log("Questionario key", this.questionariokey);
-      this.grupokey = this.servico.addGrupo(group, this.usuariokey,this.questionariokey);
-     // console.log(questao)
+      this.servico.addMail(this.mails, this.usuariokey, this.questionariokey);
+      // console.log(questao)
+      this.addQuestion(group);
+      this.grupokey = this.servico.addGrupo(group, this.usuariokey, this.questionariokey);
     }
     else {
       alert("Usuário não definido");
     }
-     alert("Formulário Cadastrado");
+    alert("Formulário Cadastrado");
+  }
+
+  salvarGrupo() {
+  }
+
+  inserirEmail() {
+    let aux = this.mail;
+    this.mails.push(aux);
   }
 
   addQuestion(grupo: Group) {
@@ -88,8 +103,4 @@ export class SurveyComponent implements OnInit {
     questao.respota = this.resposta;
     grupo.abertas.push(questao);
   }
-
-
-
-
 }
