@@ -45,3 +45,19 @@ li {
     display: inline-block;
 }
 
+a {
+  color:black;
+  transition: .2s;
+}
+
+.btn-apagar:hover {
+  color: #a30000;
+}
+
+.btn-editar:hover {
+  color: #a25100;
+}
+
+.btn-usuarios:hover {
+  color: #00808c;
+}
