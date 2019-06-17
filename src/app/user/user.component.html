@@ -23,7 +23,7 @@
 
         <div class="container row justify-content-around">
 
-          <div class="col-12 col-sm-4 col-lg-3  mini-box-form m-4 p-3 d-flex align-items-start flex-column"
+          <div class="col-12 col-sm-4 col-lg-3  mini-box-form m-4 p-3 d-flex align-items-start flex-column" (click) = 'editForm(questionario.key)'
           *ngFor="let questionario of  questionarios | async">
                 <div class="mb-auto p-2">
                     <h4>{{questionario.titulo}}</h4>

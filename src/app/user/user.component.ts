@@ -62,6 +62,11 @@ export class UserComponent implements OnInit {
     });
   }
 
+
+  editForm(key: string) {
+    this.router.navigate(['/survey/',key]);
+  }
+
   save(value) {
     this.userService.updateCurrentUser(value)
       .then(res => {

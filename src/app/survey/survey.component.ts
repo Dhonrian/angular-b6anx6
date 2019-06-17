@@ -31,6 +31,7 @@ export class SurveyComponent implements OnInit {
   private questionarios: Observable<any>;
   private questionariokey;
   private grupokey;
+  private questionario: Survey;
 
 
   constructor(private servico: SurveyServicoService,
@@ -44,8 +45,21 @@ export class SurveyComponent implements OnInit {
     this.afAuth.authState.subscribe(user => {
       if (user) this.usuariokey = user.uid;
       this.questionarios = this.servico.getAllQuestionario(this.usuariokey);
+
+
+      if (this.questionariokey != '') {
+
+        this.servico.getQuestionario(this.usuariokey, this.questionariokey).subscribe(q =>
+          console.log(q),
+          error => console.log(error))
+      }
     })
-    
+    this.route.params.subscribe(parametros => {
+      this.questionariokey = (parametros['questionariokey'] != undefined ? parametros['questionariokey'] : '');
+    });
+
+
+
   }
 
   toData(data): number {

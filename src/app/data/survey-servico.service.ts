@@ -42,6 +42,19 @@ export class SurveyServicoService {
       );
   }
 
+    getQuestionario(usuariokey:string, questionariokey: string) {
+    return this.bd.list(`prj/usuarios/${usuariokey}/questionarios/${questionariokey}`,
+    )
+      .snapshotChanges() /* pegar as mudanças */
+      .pipe(
+        /* mapeamento das mudanças */
+        map(changes => {
+          /* ... são todas as demais propriedades do objeto JSON que está no BD */
+          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+        })
+      );
+  }
+
   getAllQuestionario(usuariokey:string) {
     return this.bd.list(`prj/usuarios/${usuariokey}/questionarios/`,
       ref => ref.orderByChild('prj/usuarios/questionarios/titulo')
