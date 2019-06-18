@@ -43,6 +43,9 @@
     <div class="container p-5 box mt-4" id="box2">
 
         <div class="my-4">
+           <select [(ngModel)]='selectedOption' id="resptipo" class="my-4 py-3"> 
+              <option *ngFor="let i of groups"> {{i.titulo}} </option>
+           </select>
             <h5>Pergunta</h5>
             <p><textarea name="" id="" class="inpText" [(ngModel)]="enunciado" placeholder="Digite a Questão..."></textarea></p>
         </div>
