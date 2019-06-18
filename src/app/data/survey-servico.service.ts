@@ -42,6 +42,10 @@ export class SurveyServicoService {
       );
   }
 
+    excluirQuestionario(usuariokey: string, questionariokey: string){
+      this.bd.list(`prj/usuarios/${usuariokey}/questionarios`).remove(questionariokey);
+    }
+
     getQuestionario(usuariokey:string, questionariokey: string) {
     return this.bd.list(`prj/usuarios/${usuariokey}/questionarios/${questionariokey}`,
     )
