@@ -67,6 +67,10 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/survey/',key]);
   }
 
+  excluirForm(key: string) {
+    this.servico.excluirQuestionario(this.usuariokey, key);
+  }
+
   save(value) {
     this.userService.updateCurrentUser(value)
       .then(res => {
