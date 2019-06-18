@@ -24,6 +24,7 @@ export class SurveyComponent implements OnInit {
   private resposta: string[];
   private inicio: string;
   private grupo: string;
+  private groups: Group[] = [];
   private fim: string;
   private usuariokey;
   private lists;
@@ -76,10 +77,6 @@ export class SurveyComponent implements OnInit {
 
   salvarQuestionario() {
 
-    let group: Group = new Group();
-    group.titulo = this.grupo;
-    group.abertas = [];
-    group.fechadas = [];
 
 
     if (this.usuariokey != undefined) {
@@ -104,6 +101,12 @@ export class SurveyComponent implements OnInit {
   }
 
   salvarGrupo() {
+    let group: Group = new Group();
+    group.titulo = this.grupo;
+    group.abertas = [];
+    group.fechadas = [];
+    this.groups.push(group);
+    console.log(this.groups);
   }
 
   inserirEmail() {
